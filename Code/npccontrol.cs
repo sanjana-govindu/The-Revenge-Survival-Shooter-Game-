@@ -1,4 +1,14 @@
-#NPC control- This code is responsible for movement of the enemies in the terrain.
+/*
+ * NPC Control Script
+ * 
+ * Purpose: Controls the wandering behavior of enemy NPCs in the game terrain.
+ * This script makes enemies patrol randomly within a defined radius using Unity's NavMesh system.
+ * 
+ * Key Features:
+ * - Random wandering within configurable radius
+ * - Timer-based movement updates
+ * - NavMesh-based pathfinding for terrain-aware navigation
+ */
 
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +28,7 @@ public class npccontrol : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         timer = wanderTimer;
     }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,16 +46,14 @@ public class npccontrol : MonoBehaviour
             timer = 0;
         }
     }
+    
+    // Generates a random point on the NavMesh within specified radius
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
         Vector3 randDirection = Random.insideUnitSphere * dist;
-
         randDirection += origin;
-
         NavMeshHit navHit;
-
         NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
-
         return navHit.position;
     }
 }
