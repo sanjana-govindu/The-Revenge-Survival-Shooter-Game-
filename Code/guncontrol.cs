@@ -1,4 +1,10 @@
-#Gun control- This code makes the gun animate, sound and shoot the enemies. And it also increases the score on shooting an enemy by 5.
+/*
+ * Gun Control Script
+ * 
+ * Manages gun shooting mechanics, animations, audio, particle effects, and score tracking.
+ * Uses raycast for hit detection. Awards 5 points per enemy kill. Win at 120 points.
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,23 +16,26 @@ public class guncontrol : MonoBehaviour
     public Animator gunAnimator;
     public AudioSource gunaudio;
     public GameObject particle;
-    // Start is called before the first frame update
+    
     void Start()
     {
         score = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(score==120)
+        // Win condition - freeze game at 120 points
+        if(score == 120)
         {
             Time.timeScale = 0;
         }
+        
         RaycastHit raycastHit;
+        
         if (Input.GetMouseButton(0))
         {
             Debug.Log("Fire");
+            
             if (!gunAnimator.isActiveAndEnabled)
             {
                 gunAnimator.enabled = true;
@@ -36,13 +45,14 @@ public class guncontrol : MonoBehaviour
                 gunaudio.Play();
             }
             particle.SetActive(true);
+            
+            // Raycast from camera forward, range 200 units
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out raycastHit, 200))
             {
                 if (raycastHit.collider.gameObject.tag == "enemy")
                 {
                     Debug.Log("Hit Enemy");
                     score = score + 5;
-
                     Destroy((GameObject)raycastHit.collider.gameObject);
                 }
                 else
