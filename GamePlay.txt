@@ -1,12 +1,67 @@
-This game is a first-person shooter game. In the game the player should shoot the enemies with a gun in order to score points.
-And the game ends if players if the enemy comes close to him. It is a very good game for children and youth to play. The game made in unity with source code in C#. 
-Many assets are used to build terrains in the game.
+# THE REVENGE - GAMEPLAY GUIDE
 
-The brief explanation of working of the game is given below:
+## Game Overview
+The Revenge is a first-person shooter game built with Unity and C#. Players must survive by shooting enemies before they get too close. The game features intelligent AI enemies that patrol and chase the player, realistic gun mechanics, and a score-based progression system.
 
-  1.	The player spawns into the game with a gun.
-  2.	The player can move all around the terrain and should find enemies.
-  3.	When the enemy appears, the player should shoot him to score points.
-  4.	Each time the player the shoots the enemy the points get increased by 5.
-  5.	The game is over if the enemy comes very close to the player.
+## Objective
+- Shoot enemies to score points (5 points per kill)
+- Reach 120 points to win the game
+- Survive by keeping enemies at a distance
+- Game ends if an enemy gets too close
+
+## How to Play
+
+### Controls
+- **Mouse Movement** - Look around
+- **Left Mouse Button** - Shoot
+- **WASD/Arrow Keys** - Move around the terrain
+
+### Gameplay Flow
+1. **Spawn** - Player starts in the terrain with a gun
+2. **Explore** - Move around to find enemies
+3. **Detect** - Enemies appear and patrol the area
+4. **Engage** - Shoot enemies when they appear
+5. **Score** - Each enemy killed awards 5 points
+6. **Win/Lose** - Reach 120 points to win, or lose if enemy touches you
+
+## Game Mechanics
+
+### Enemy AI Behavior
+- **Wander State**: Enemies patrol randomly within their designated area
+- **Detection**: Enemies detect player within 10-unit radius
+- **Chase State**: Once detected, enemies pursue the player using pathfinding
+- **Attack**: Game ends immediately when enemy collides with player
+
+### Scoring System
+- Points per enemy killed: 5
+- Total enemies needed to win: 24
+- Win threshold: 120 points
+- Score displayed in real-time
+
+### Gun Mechanics
+- Raycast-based shooting for accurate hit detection
+- Range: 200 units
+- Automatic animation and sound effects
+- Muzzle flash particle effects
+- Instant enemy destruction on hit
+
+## Tips for Success
+- Keep moving to avoid being cornered
+- Maintain distance from enemies
+- Listen for enemy sounds to detect their presence
+- Aim carefully - accuracy is key
+- Be aware of your surroundings at all times
+
+## Technical Details
+- **Engine**: Unity 3D
+- **Language**: C#
+- **AI**: NavMesh pathfinding system
+- **Physics**: Raycast hit detection
+- **Target Audience**: Children and youth
+
+## Win/Lose Conditions
+- **Win**: Score reaches 120 points (game freezes)
+- **Lose**: Enemy collides with player (returns to menu)
+
+This game provides an exciting and challenging FPS experience perfect for quick gaming sessions!
 
